@@ -107,7 +107,7 @@ function renderProfile(user) {
   const totalXP = createElement(
     "p",
     "",
-    `Total XP: <span class="badge">${convertXPToReadable(user.totalXP)}</span>`
+    `<span class="badge xpbadge">${convertXPToReadable(user.totalXP)}</span>`
   );
   const level = createElement(
     "p",
