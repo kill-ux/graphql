@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.contaner-home {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  font-family: "Roboto";
+}
+
+div:has(> .profile) {
+  background-color: rgba(41, 41, 41, 0.39);
+  padding: 3px;
+}
+
+.profile {
+  background-color: rgb(0, 0, 0);
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.firstName {
+  padding-block: 5px;
+  border-bottom: 2px solid rgb(31, 31, 31);
+}
+
+.badge {
+  background-color: rgba(31, 31, 31, 0.877);
+  padding-inline: 5px;
+  border-radius: 5px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill {
+  background: rgba(29, 29, 29, 0.795);
+  margin: 5px;
+  padding: 10px;
+  width: 33%;
+  height: 20px;
+  position: relative;
+  border: 1px solid rgb(59, 65, 121);
+}
+
+.skill-div {
+  /* position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(2,0,36,0) 35%, rgb(59, 65, 121) 100%); */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(59, 65, 121) 90%,
+    rgba(2, 0, 36, 0) 100%
+  );
+  z-index: -1;
+}
+
+.xps svg {
+  border: 1px solid rgb(37, 37, 37);
+  /* padding: 20px; */
+}
+
+.xps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* .polyline {
+  fill:  rgba(59, 65, 121, 0.39);
+} */
+
+.audits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.audits svg {
+  background-color: rgba(37, 37, 37, 0.322);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: end;
+}
+
+.logout {
+  margin-block: auto;
+  margin: 20px;
+}
+
+.dndnd {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.error {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.text {
+  opacity: 0;
+  fill: plum;
+}
+
+.error-login {
+  color: tomato;
+}
+
+.circle {
+  fill: rgb(102, 79, 202);
+}
+
+.circle:hover {
+  fill: rgb(85, 68, 163);
+  r: 4px;
+  transition: all 0.5s ease;
+}
+
+.text:has(+ .circle:hover) {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.Level {
+  background-color: rgba(38, 36, 68, 0.308);
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 50px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed cornflowerblue;
+  box-shadow: 0 0 5px;
+  color:cornflowerblue;
+}
