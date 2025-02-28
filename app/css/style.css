@@ -156,3 +156,18 @@ div:has(> .profile) {
   box-shadow: 0 0 5px;
   color:cornflowerblue;
 }
+
+
+.xpbadge {
+  font-size: xx-large;
+  margin: 10px 5px;
+  padding: 5px;
+  border-block: 1px solid rgba(98, 179, 255, 0.986);
+  box-shadow: 0 0 10px  rgba(98, 179, 255, 0.527);
+  background-color: rgb(0, 0, 0);
+}
+
+p:has( .xpbadge) {
+  margin: 30px;
+  color: rgba(98, 179, 255, 0.986);
+}
