@@ -178,16 +178,12 @@ function renderXPProgress(xps, totalXP) {
   let cumulativeXP = 0;
   const points = xps.map((xp) => {
     cumulativeXP += xp.amount;
-    // X: Map time to the plotting width, offset by padding
+
     const x = padding + ((xp.time.getTime() - minTime) / timeSpan) * plotWidth;
-    // Y: Map cumulative XP from bottom (high y) to top (low y) within plotting height
     const y = fullHeight - padding - (cumulativeXP / totalXP) * plotHeight;
 
-    // Dynamic text positioning
-    // const offset = 10; // Distance from point to text
-    // const minYText = padding; // Keep text below top padding
     const yText = y - 25;
-    const xText = x; // Center text on the point
+    const xText = x; 
 
     svg.innerHTML += `
       <text class="text" x="${xText}" y="${yText}" text-anchor="middle" font-family="Arial" font-size="9" fill="white">
@@ -210,6 +206,7 @@ function renderXPProgress(xps, totalXP) {
   polyline.setAttribute("stroke", "rgb(59, 65, 121)");
   polyline.setAttribute("stroke-width", "2");
   polyline.setAttribute("points", points.join(" "));
+
   const H2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
   H2.textContent = `XP progress`;
   H2.setAttribute("x", "20");
@@ -237,10 +234,11 @@ const renderAudits = (audits) => {
   const svgWidth = 300;
   const svgHeight = 200;
 
-  // Calculate the maximum value to scale bars (avoid division by zero)
+  const availablWith = svgWidth - 50
+
   const maxValue = Math.max(totalUp, totalDown, 1);
-  const upPercentage = ((totalUp + totalUpBonus) / maxValue) * 100; // Percentage for audits done
-  const downPercentage = (totalDown / maxValue) * 100; // Percentage for audits received
+  const upPercentage = ((totalUp + totalUpBonus) / maxValue) * availablWith; // Percentage for audits done
+  const downPercentage = (totalDown / maxValue) * availablWith; // Percentage for audits received
 
   // Create SVG element
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -249,9 +247,12 @@ const renderAudits = (audits) => {
 
   // Bar for audits done (totalUp)
   const rectUp = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  rectUp.setAttribute("width", ((svgWidth - 100) * upPercentage) / 100); // Scale width based on percentage
+  rectUp.setAttribute("width", upPercentage); // Scale width based on percentage
   rectUp.setAttribute("height", 15);
-  rectUp.setAttribute("fill", `${totalUp > totalDown ? "cornflowerblue" : "white"}`);
+  rectUp.setAttribute(
+    "fill",
+    `${totalUp > totalDown ? "cornflowerblue" : "white"}`
+  );
   rectUp.setAttribute("x", "20");
   rectUp.setAttribute("y", "20");
 
@@ -260,9 +261,12 @@ const renderAudits = (audits) => {
     "http://www.w3.org/2000/svg",
     "rect"
   );
-  rectDown.setAttribute("width", ((svgWidth - 100) * downPercentage) / 100); // Scale width based on percentage
+  rectDown.setAttribute("width", downPercentage); // Scale width based on percentage
   rectDown.setAttribute("height", 15);
-  rectDown.setAttribute("fill", `${totalUp > totalDown ? "white" : "cornflowerblue"}`);
+  rectDown.setAttribute(
+    "fill",
+    `${totalUp > totalDown ? "white" : "cornflowerblue"}`
+  );
   rectDown.setAttribute("x", "20");
   rectDown.setAttribute("y", "75");
 
@@ -273,7 +277,11 @@ const renderAudits = (audits) => {
   )} | Bonus: ${convertXPToReadable(totalUpBonus)}`;
   textUp.setAttribute("x", "20");
   textUp.setAttribute("y", "15"); // Position above the bar
-  textUp.setAttribute("fill", `${totalUp > totalDown ? "cornflowerblue" : "white"}`);
+  textUp.setAttribute(
+    "fill",
+    `${totalUp > totalDown ? "cornflowerblue" : "white"}`
+  );
+  textUp.setAttribute("font-size","12")
 
   // Label for audits received
   const textDown = document.createElementNS(
@@ -283,7 +291,11 @@ const renderAudits = (audits) => {
   textDown.textContent = `Audits Received: ${convertXPToReadable(totalDown)}`;
   textDown.setAttribute("x", "20");
   textDown.setAttribute("y", "70"); // Position above the bar
-  textDown.setAttribute("fill", `${totalUp > totalDown ? "white" : "cornflowerblue"}`);
+  textDown.setAttribute(
+    "fill",
+    `${totalUp > totalDown ? "white" : "cornflowerblue"}`
+  );
+  textDown.setAttribute("font-size","12")
 
   // Label for audits received
   const textRatio = document.createElementNS(
